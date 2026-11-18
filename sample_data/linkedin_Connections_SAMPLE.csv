@@ -1,0 +1,109 @@
+Notes:
+"SAMPLE DATA - fictional connections generated for the Project Purpose pilot. Mirrors LinkedIn's Connections.csv export format."
+
+First Name,Last Name,URL,Email Address,Company,Position,Connected On
+Carlos,Hargrove,https://www.linkedin.com/in/sample-carlos-hargrove-1000,carlos.hargrove@bluebonnetcap.example,Bluebonnet Capital Partners,Chief Financial Officer,01 Jan 2015
+Robert,Ravenscroft,https://www.linkedin.com/in/sample-robert-ravenscroft-1001,robert.ravenscroft@brightwater.example,Brightwater Advisory,Board Volunteer,02 Feb 2016
+Brian,Ostrander,https://www.linkedin.com/in/sample-brian-ostrander-1002,brian.ostrander@trinityridge.example,Trinity Ridge Equity,VP Operations,03 Mar 2017
+Daniel,Galloway,https://www.linkedin.com/in/sample-daniel-galloway-1003,daniel.galloway@bluebonnetcap.example,Bluebonnet Capital Partners,Chief Technology Officer,04 Apr 2018
+Wei,Juarez-Pell,https://www.linkedin.com/in/sample-wei-juarez-pell-1004,wei.juarezpell@granitepeak.example,Granite Peak Industrial,Director of Operations,05 May 2019
+Richard,Montague,https://www.linkedin.com/in/sample-richard-montague-1005,richard.montague@quarrypoint.example,Quarry Point IT Services,Chief Operating Officer,06 Jun 2020
+Sarah,Castellano,https://www.linkedin.com/in/sample-sarah-castellano-1006,sarah.castellano@quarrypoint.example,Quarry Point IT Services,Partner,07 Jul 2021
+Robert,Fairchild,https://www.linkedin.com/in/sample-robert-fairchild-1007,robert.fairchild@ironhorsefreight.example,Ironhorse Freight,Board Volunteer,08 Aug 2022
+Joshua,Ostrander,https://www.linkedin.com/in/sample-joshua-ostrander-1008,joshua.ostrander@pecosvalley.example,Pecos Valley Holdings,Coordinator,09 Sep 2023
+Sandra,Nakamura-Reyes,https://www.linkedin.com/in/sample-sandra-nakamura-reyes-1009,sandra.nakamurareyes@redmesafab.example,Red Mesa Fabrication,Principal,10 Oct 2024
+Robert,Kowalczyk,https://www.linkedin.com/in/sample-robert-kowalczyk-1010,robert.kowalczyk@copperleaf.example,Copperleaf Analytics,Analyst,11 Nov 2025
+Andrew,Juarez-Pell,https://www.linkedin.com/in/sample-andrew-juarez-pell-1011,andrew.juarezpell@bluebonnetcap.example,Bluebonnet Capital Partners,Owner,12 Dec 2015
+Jessica,Ostrander,https://www.linkedin.com/in/sample-jessica-ostrander-1012,jessica.ostrander@sagebrushenergy.example,Sagebrush Energy Partners,Chief Financial Officer,13 Jan 2016
+Karen,Montague,https://www.linkedin.com/in/sample-karen-montague-1013,karen.montague@silverlinevc.example,Silverline Ventures,Regional Director,14 Feb 2017
+Ryan,Abernathy,https://www.linkedin.com/in/sample-ryan-abernathy-1014,ryan.abernathy@westfork.example,Westfork Search Partners,Analyst,15 Mar 2018
+Fatima,Kensington,https://www.linkedin.com/in/sample-fatima-kensington-1015,fatima.kensington@summitarch.example,Summit Arch Properties,Chief Technology Officer,16 Apr 2019
+Aisha,Cartwright,https://www.linkedin.com/in/sample-aisha-cartwright-1016,aisha.cartwright@northwindlogic.example,Northwind Logic,Coordinator,17 May 2020
+Patricia,Ravenscroft,https://www.linkedin.com/in/sample-patricia-ravenscroft-1017,patricia.ravenscroft@prairiegate.example,Prairie Gate Realty,Chief Technology Officer,18 Jun 2021
+Matthew,Northcutt,https://www.linkedin.com/in/sample-matthew-northcutt-1018,matthew.northcutt@magnoliaprecision.example,Magnolia Precision Parts,CEO,19 Jul 2022
+Fatima,Vandermeer,https://www.linkedin.com/in/sample-fatima-vandermeer-1019,fatima.vandermeer@silverlinevc.example,Silverline Ventures,VP Operations,20 Aug 2023
+Thomas,Fairchild,https://www.linkedin.com/in/sample-thomas-fairchild-1020,thomas.fairchild@copperleaf.example,Copperleaf Analytics,,21 Sep 2024
+Katherine,Galloway,https://www.linkedin.com/in/sample-katherine-galloway-1021,katherine.galloway@silverlinevc.example,Silverline Ventures,"Senior Vice President, Sales",22 Oct 2025
+Jennifer,Whitlock,https://www.linkedin.com/in/sample-jennifer-whitlock-1022,jennifer.whitlock@mesquitetrust.example,Mesquite Trust Company,Relationship Manager,23 Nov 2015
+Rebecca,Quarles,https://www.linkedin.com/in/sample-rebecca-quarles-1023,rebecca.quarles@caprock.example,Caprock Midstream,Founder & CEO,24 Dec 2016
+Michael,Everly,https://www.linkedin.com/in/sample-michael-everly-1024,michael.everly@trinityridge.example,Trinity Ridge Equity,,25 Jan 2017
+Emily,Hargrove,https://www.linkedin.com/in/sample-emily-hargrove-1025,,Harbor Signal Systems,Head of Partnerships,26 Feb 2018
+Katherine,Fairchild,https://www.linkedin.com/in/sample-katherine-fairchild-1026,,Granite Peak Industrial,Head of Partnerships,27 Mar 2019
+Michelle,Stallworth,https://www.linkedin.com/in/sample-michelle-stallworth-1027,,Silverline Ventures,Managing Partner,01 Apr 2020
+Carlos,Okonkwo-Hale,https://www.linkedin.com/in/sample-carlos-okonkwo-hale-1028,,Holloway & Pratt LLP,Director of Supply Chain,02 May 2021
+Elizabeth,Lindqvist,https://www.linkedin.com/in/sample-elizabeth-lindqvist-1029,,Harbor Signal Systems,General Manager,03 Jun 2022
+Andrew,Ellsworth,https://www.linkedin.com/in/sample-andrew-ellsworth-1030,,Northwind Logic,Controller,04 Jul 2023
+Michael,Ostrander,https://www.linkedin.com/in/sample-michael-ostrander-1031,,Ironhorse Freight,Chief Operating Officer,05 Aug 2024
+Mateo,Stallworth,https://www.linkedin.com/in/sample-mateo-stallworth-1032,,First Cedar Bank,Senior Associate,06 Sep 2025
+Richard,Ostrander,https://www.linkedin.com/in/sample-richard-ostrander-1033,,Magnolia Precision Parts,Chief Operating Officer,07 Oct 2015
+Thomas,Zimmerly,https://www.linkedin.com/in/sample-thomas-zimmerly-1034,,Hill Country Health Partners,"Senior Vice President, Sales",08 Nov 2016
+Ryan,Everly,https://www.linkedin.com/in/sample-ryan-everly-1035,,Open Range Foundation,General Manager,09 Dec 2017
+Carlos,Yarborough,https://www.linkedin.com/in/sample-carlos-yarborough-1036,,Sagebrush Energy Partners,Regional Director,10 Jan 2018
+Anthony,Yarborough,https://www.linkedin.com/in/sample-anthony-yarborough-1037,,Bulwark Mutual Insurance,Director of Supply Chain,11 Feb 2019
+Jennifer,Northcutt,https://www.linkedin.com/in/sample-jennifer-northcutt-1038,,Prairie Gate Realty,Analyst,12 Mar 2020
+Priya,Ravenscroft,https://www.linkedin.com/in/sample-priya-ravenscroft-1039,,Red Mesa Fabrication,Chief Operating Officer,13 Apr 2021
+Aisha,Ellsworth,https://www.linkedin.com/in/sample-aisha-ellsworth-1040,,Mesquite Trust Company,Account Executive,14 May 2022
+Rebecca,Kensington,https://www.linkedin.com/in/sample-rebecca-kensington-1041,,Bulwark Mutual Insurance,Director of Supply Chain,15 Jun 2023
+Emily,Pemberton,https://www.linkedin.com/in/sample-emily-pemberton-1042,,Lantern Street Marketing,VP Operations,16 Jul 2024
+Anthony,Everly,https://www.linkedin.com/in/sample-anthony-everly-1043,,Lone Star Forge Works,Head of Partnerships,17 Aug 2025
+Katherine,Ravenscroft,https://www.linkedin.com/in/sample-katherine-ravenscroft-1044,,Sagebrush Energy Partners,Founder,18 Sep 2015
+Carlos,Kowalczyk,https://www.linkedin.com/in/sample-carlos-kowalczyk-1045,,Bluebonnet Capital Partners,President & Owner,19 Oct 2016
+Kevin,Underhill,https://www.linkedin.com/in/sample-kevin-underhill-1046,,Westfork Search Partners,Account Executive,20 Nov 2017
+Mateo,Dunmore,https://www.linkedin.com/in/sample-mateo-dunmore-1047,,Lantern Street Marketing,General Manager,21 Dec 2018
+Kevin,Castellano,https://www.linkedin.com/in/sample-kevin-castellano-1048,,Tidewater Logistics Group,Founder & CEO,22 Jan 2019
+Mary,Ashcombe,https://www.linkedin.com/in/sample-mary-ashcombe-1049,,Northwind Logic,Co-Founder,23 Feb 2020
+Ryan,Ellsworth,https://www.linkedin.com/in/sample-ryan-ellsworth-1050,,Copperleaf Analytics,Controller,24 Mar 2021
+Joshua,Lindqvist,https://www.linkedin.com/in/sample-joshua-lindqvist-1051,,Cobalt Line Plastics,Analyst,25 Apr 2022
+Omar,Underhill,https://www.linkedin.com/in/sample-omar-underhill-1052,,Quarry Point IT Services,Retired,26 May 2023
+Joshua,Greenleaf,https://www.linkedin.com/in/sample-joshua-greenleaf-1053,,Silverline Ventures,Chief Operating Officer,27 Jun 2024
+Susan,Everly,https://www.linkedin.com/in/sample-susan-everly-1054,susan.everly@caprock.example,Caprock Midstream,Director of Operations,01 Jul 2025
+Matthew,Quarles,https://www.linkedin.com/in/sample-matthew-quarles-1055,matthew.quarles@mesquitetrust.example,Mesquite Trust Company,Chief Operating Officer,02 Aug 2015
+Daniel,Pemberton,https://www.linkedin.com/in/sample-daniel-pemberton-1056,daniel.pemberton@silverlinevc.example,Silverline Ventures,Regional Director,03 Sep 2016
+Hiroshi,Kowalczyk,https://www.linkedin.com/in/sample-hiroshi-kowalczyk-1057,hiroshi.kowalczyk@quarrypoint.example,Quarry Point IT Services,"Vice President, Enterprise Accounts",04 Oct 2017
+Emily,Quarles,https://www.linkedin.com/in/sample-emily-quarles-1058,emily.quarles@northwindlogic.example,Northwind Logic,Chief Operating Officer,05 Nov 2018
+Hiroshi,Montague,https://www.linkedin.com/in/sample-hiroshi-montague-1059,hiroshi.montague@firstcedar.example,First Cedar Bank,Account Executive,06 Dec 2019
+Sarah,Montague,https://www.linkedin.com/in/sample-sarah-montague-1105,,Cornerstone Builders,CEO,25 Oct 2021
+Susan,Yarborough,https://www.linkedin.com/in/sample-susan-yarborough-1106,,Mesquite Trust Company,Director of Supply Chain,26 Nov 2022
+Kevin,Ingram,https://www.linkedin.com/in/sample-kevin-ingram-1107,,Pecos Valley Holdings,President & Owner,27 Dec 2023
+Michelle,Ostrander,https://www.linkedin.com/in/sample-michelle-ostrander-1108,michelle.ostrander@lonestarforge.example,Lone Star Forge Works,Chief Financial Officer,01 Jan 2024
+Melissa,Ostrander,https://www.linkedin.com/in/sample-melissa-ostrander-1109,,Westfork Search Partners,Senior Associate,02 Feb 2025
+James,Ellsworth,https://www.linkedin.com/in/sample-james-ellsworth-1110,,Ironhorse Freight,Owner,03 Mar 2015
+Omar,Dunmore,https://www.linkedin.com/in/sample-omar-dunmore-1111,,Holloway & Pratt LLP,Relationship Manager,04 Apr 2016
+Kevin,Ellsworth,https://www.linkedin.com/in/sample-kevin-ellsworth-1112,kevin.ellsworth@mesquitetrust.example,Mesquite Trust Company,Senior Associate,05 May 2017
+Michael,Vandermeer,https://www.linkedin.com/in/sample-michael-vandermeer-1113,,Copperleaf Analytics,Retired,06 Jun 2018
+David,Holloway,https://www.linkedin.com/in/sample-david-holloway-1114,,Holloway & Pratt LLP,Coordinator,07 Jul 2019
+Brian,Ravenscroft,https://www.linkedin.com/in/sample-brian-ravenscroft-1115,,Open Range Foundation,Chief Operating Officer,08 Aug 2020
+Priya,Greenleaf,https://www.linkedin.com/in/sample-priya-greenleaf-1116,priya.greenleaf@hollowaypratt.example,Holloway & Pratt LLP,Engagement Manager,09 Sep 2021
+Daniel,Lindqvist,https://www.linkedin.com/in/sample-daniel-lindqvist-1117,,,Principal,10 Oct 2022
+Amanda,Fenwick,https://www.linkedin.com/in/sample-amanda-fenwick-1118,,Northwind Logic,Director of Supply Chain,11 Nov 2023
+Brian,Fenwick,https://www.linkedin.com/in/sample-brian-fenwick-1119,,Pecos Valley Holdings,Owner,12 Dec 2024
+Jessica,Merriweather,https://www.linkedin.com/in/sample-jessica-merriweather-1120,jessica.merriweather@lanternstreet.example,Lantern Street Marketing,Chief Technology Officer,13 Jan 2025
+Thomas,Galloway,https://www.linkedin.com/in/sample-thomas-galloway-1121,,Tidewater Logistics Group,CEO,14 Feb 2015
+Priya,Cartwright,https://www.linkedin.com/in/sample-priya-cartwright-1122,,Granite Peak Industrial,Managing Director,15 Mar 2016
+Jennifer,Cartwright,https://www.linkedin.com/in/sample-jennifer-cartwright-1123,,Tidewater Logistics Group,Head of Partnerships,16 Apr 2017
+Jessica,Everly,https://www.linkedin.com/in/sample-jessica-everly-1124,jessica.everly@silverlinevc.example,Silverline Ventures,Managing Director,17 May 2018
+Elena,Dunmore,https://www.linkedin.com/in/sample-elena-dunmore-1125,,Caprock Midstream,Principal,18 Jun 2019
+Wei,Galloway,https://www.linkedin.com/in/sample-wei-galloway-1126,,Red Mesa Fabrication,Chief Financial Officer,19 Jul 2020
+William,Ashcombe,https://www.linkedin.com/in/sample-william-ashcombe-1127,,Sagebrush Energy Partners,Owner,20 Aug 2021
+Elena,Vandermeer,https://www.linkedin.com/in/sample-elena-vandermeer-1128,elena.vandermeer@prairiegate.example,Prairie Gate Realty,Managing Partner,21 Sep 2022
+Thomas,Pemberton,https://www.linkedin.com/in/sample-thomas-pemberton-1129,,Lantern Street Marketing,Account Executive,22 Oct 2023
+Andrew,Merriweather,https://www.linkedin.com/in/sample-andrew-merriweather-1130,,,Analyst,23 Nov 2024
+Emily,Delacroix,https://www.linkedin.com/in/sample-emily-delacroix-1131,,Lone Star Forge Works,CEO,24 Dec 2025
+Daniel,Cartwright,https://www.linkedin.com/in/sample-daniel-cartwright-1132,daniel.cartwright@quarrypoint.example,Quarry Point IT Services,Partner,25 Jan 2015
+Steven,Ravenscroft,https://www.linkedin.com/in/sample-steven-ravenscroft-1133,,Sagebrush Energy Partners,Chief Technology Officer,26 Feb 2016
+Nancy,Pemberton,https://www.linkedin.com/in/sample-nancy-pemberton-1134,,Ironhorse Freight,Vice President of Strategy,27 Mar 2017
+David,Delacroix,https://www.linkedin.com/in/sample-david-delacroix-1135,,Westfork Search Partners,Relationship Manager,01 Apr 2018
+Michelle,Galloway,https://www.linkedin.com/in/sample-michelle-galloway-1136,michelle.galloway@prairiegate.example,Prairie Gate Realty,Senior Vice President,02 May 2019
+William,Juarez-Pell,https://www.linkedin.com/in/sample-william-juarez-pell-1137,,Keystone Ledger CPAs,Partner,03 Jun 2020
+James,Fairchild,https://www.linkedin.com/in/sample-james-fairchild-1138,,Summit Arch Properties,Chief Financial Officer,04 Jul 2021
+Fatima,Pemberton,https://www.linkedin.com/in/sample-fatima-pemberton-1139,,Mesquite Trust Company,Engagement Manager,05 Aug 2022
+Anthony,Blackwood,https://www.linkedin.com/in/sample-anthony-blackwood-1140,anthony.blackwood@ironhorsefreight.example,Ironhorse Freight,Vice President of Strategy,06 Sep 2023
+Margaret,Fenwick,https://www.linkedin.com/in/sample-margaret-fenwick-1141,,Magnolia Precision Parts,Chief Operating Officer,07 Oct 2024
+Joshua,Ashcombe,https://www.linkedin.com/in/sample-joshua-ashcombe-1142,,Magnolia Precision Parts,Chief Financial Officer,08 Nov 2025
+William,Kensington,https://www.linkedin.com/in/sample-william-kensington-1143,,,Owner,09 Dec 2015
+Katherine,Abernathy,https://www.linkedin.com/in/sample-katherine-abernathy-1144,katherine.abernathy@lanternstreet.example,Lantern Street Marketing,Head of Partnerships,10 Jan 2016
+Katherine,Quarles,https://www.linkedin.com/in/sample-katherine-quarles-1145,,Caprock Midstream,Chief Financial Officer,11 Feb 2017
+Nancy,Stallworth,https://www.linkedin.com/in/sample-nancy-stallworth-1146,,Copperleaf Analytics,Head of Partnerships,12 Mar 2018
+Sarah,Kowalczyk,https://www.linkedin.com/in/sample-sarah-kowalczyk-1147,,Granite Peak Industrial,Chief Operating Officer,13 Apr 2019
+Matthew,Merriweather,https://www.linkedin.com/in/sample-matthew-merriweather-1148,matthew.merriweather@cornerstonebld.example,Cornerstone Builders,Managing Director,14 May 2020
+Eric,Northcutt,https://www.linkedin.com/in/sample-eric-northcutt-1149,,Copperleaf Analytics,Co-Founder,15 Jun 2021

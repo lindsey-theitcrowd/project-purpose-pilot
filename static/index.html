@@ -1,0 +1,140 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Project Purpose · Relationship Database (PILOT – SAMPLE DATA)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--ink:#1d2433;--mut:#6b7385;--line:#e3e6ee;--bg:#f6f7fb;--acc:#1f5eff;--ok:#0f8a5f;--bad:#c23b3b;--warn:#b7791f}
+*{box-sizing:border-box}body{margin:0;font:14px/1.45 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+.banner{background:#fff4d6;border-bottom:1px solid #f0d68a;padding:6px 18px;font-size:12.5px;color:#6b4e00}
+header{display:flex;align-items:center;gap:18px;padding:12px 18px;background:#fff;border-bottom:1px solid var(--line)}
+header h1{font-size:17px;margin:0}header .sub{color:var(--mut);font-size:12px}
+nav{display:flex;gap:4px;margin-left:auto}nav button{border:0;background:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-size:13.5px;color:var(--mut)}
+nav button.on{background:#eaf0ff;color:var(--acc);font-weight:600}
+main{padding:18px;max-width:1400px;margin:0 auto}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.kpi .n{font-size:26px;font-weight:700}.kpi .l{color:var(--mut);font-size:12.5px}
+h2{font-size:15px;margin:0 0 10px}h3{font-size:13.5px;margin:12px 0 6px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;color:var(--mut);font-weight:600}tr.click:hover{background:#f4f7ff;cursor:pointer}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;margin:1px 2px;border:1px solid var(--line);background:#fafbfe;white-space:nowrap}
+.t1{background:#e8f6ef;border-color:#bfe6d2}.t2{background:#eaf0ff;border-color:#c9d6ff}.t3{background:#fff3e6;border-color:#ffd8ad}.t4{background:#f3ecff;border-color:#dccbff}.t5{background:#f1f1f1}
+.pv-Verified{background:#e8f6ef;border-color:#bfe6d2;color:#0b6b48}.pv-Participant-provided{background:#eaf0ff;color:#2846a8;border-color:#c9d6ff}
+.pv-User{background:#fff8e1;color:#7a5a00;border-color:#f3dc8f}.pv-AI{background:#f3ecff;color:#5b34b0;border-color:#dccbff}.pv-Unknown{background:#f6f6f6;color:#888}
+input,select,textarea{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fff}
+button.b{font:inherit;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer}
+button.p{background:var(--acc);color:#fff;border-color:var(--acc)}button.ok{background:var(--ok);color:#fff;border-color:var(--ok)}button.no{color:var(--bad)}
+.ask{display:flex;gap:8px}.ask input{flex:1;font-size:15px;padding:10px 12px}
+.chips .chip{display:inline-block;background:#eaf0ff;color:#2846a8;border-radius:14px;padding:3px 10px;margin:3px 4px 0 0;font-size:12.5px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.filters label{font-size:12px;color:var(--mut)}
+.mut{color:var(--mut)}.small{font-size:12px}.warn{color:var(--warn)}.bad{color:var(--bad)}.okc{color:var(--ok)}
+#drawer{position:fixed;top:0;right:0;width:min(760px,100%);height:100%;background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,.12);overflow:auto;padding:18px 22px;display:none;z-index:5}
+#drawer .x{float:right}.side{display:grid;grid-template-columns:1fr 1fr;gap:10px}.side .card{margin:0}
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:10px}.private{background:#fffbea;border:1px dashed #e9cf72;border-radius:10px;padding:8px 10px}
+.bio{background:#faf8ff;border:1px solid #e6dcff;border-radius:10px;padding:10px 12px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1d2433;color:#fff;padding:8px 14px;border-radius:8px;display:none;z-index:9}
+</style></head><body>
+<div class="banner"><b>DEMO - fictional sample data - The it Crowd.</b> Every person, company, email and phone here is fictional. Outlook (Microsoft Graph) and LinkedIn are simulated with sample files; no real accounts are connected. Bios are template summaries (no AI model key configured).</div>
+<header><div><h1>Project Purpose · Relationship Database</h1><div class="sub">Phase One pilot · private owner dashboard · The it Crowd</div></div>
+<nav id="nav"></nav><button class="b" title="Rebuild the fictional sample data from scratch" onclick="if(confirm('Reset the demo to its starting sample data? Any changes made in the demo will be cleared.'))post('/api/reset').then(()=>{toast('Demo reset');go('home')})">Reset demo</button></header>
+<main id="main"></main>
+<div id="drawer"></div><div class="toast" id="toast"></div>
+<script>
+const TABS=[["home","Home"],["people","People & Ask"],["review","Review queue"],["changes","Recent changes"],["add","Add person"],["import","Import"]];
+let tab=location.hash.slice(1)||"home";
+const $=s=>document.querySelector(s), api=async(u,o)=>{const r=await fetch(u,o);if(!r.ok){const t=await r.text();toast("Error: "+t);throw t}return r.headers.get("content-type")?.includes("json")?r.json():r.text()};
+const post=(u,b)=>api(u,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(b||{})});
+function toast(t){const e=$("#toast");e.textContent=t;e.style.display="block";setTimeout(()=>e.style.display="none",2600)}
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pv=p=>`<span class="tag pv-${String(p).split(" ")[0]}">${esc(p)}</span>`;
+const tiers=ts=>ts.map(t=>`<span class="tag t${t}">Tier ${t}</span>`).join("");
+function nav(){$("#nav").innerHTML=TABS.map(([k,l])=>`<button class="${k==tab?'on':''}" onclick="go('${k}')">${l}</button>`).join("")}
+function go(k){tab=k;location.hash=k;nav();render()}
+function peopleTable(rows){return `<table><tr><th>Name</th><th>Current title</th><th>Company</th><th>Industry</th><th>Location</th><th>Segments</th><th>Priority</th><th>Sources</th></tr>`+
+ rows.map(r=>`<tr class="click" onclick="openP(${r.id})"><td><b>${esc(r.name)}</b>${r.conflicts.length?' <span class="tag warn" title="Sources disagree">conflict</span>':''}${r.stale?' <span class="tag">stale</span>':''}${r.follow_up?' <span class="tag">follow-up</span>':''}</td>
+ <td>${r.title=="Unknown"?'<span class="mut">Unknown</span>':esc(r.title)}</td><td>${r.company=="Unknown"?'<span class="mut">Unknown</span>':esc(r.company)}</td>
+ <td>${r.industry=="Unknown"?'<span class="mut">Unknown</span>':esc(r.industry)}</td><td>${r.city=="Unknown"&&r.state=="Unknown"?'<span class="mut">Unknown</span>':esc([r.city,r.state].filter(x=>x!="Unknown").join(", "))}</td>
+ <td>${tiers(r.tiers)}${r.founder_owner?'<span class="tag">founder/owner</span>':''}</td><td>${esc(r.priority)}</td><td class="small">${r.sources.join(", ")}</td></tr>`).join("")+`</table>`}
+async function render(){const m=$("#main");m.innerHTML="<p class=mut>Loading…</p>";
+ if(tab=="home"){const s=await api("/api/stats"),a=await api("/api/audit?limit=8"),rv=await api("/api/review");
+  m.innerHTML=`<div class="card ask"><input id="q" placeholder="Ask about the network, e.g. “Show contacts who founded or ran businesses in Texas”" onkeydown="if(event.key=='Enter'){go('people');setTimeout(()=>{$('#q').value=this.value;ask()},50)}"><button class="b p" onclick="const v=$('#q').value;go('people');setTimeout(()=>{$('#q').value=v;ask()},50)">Ask</button></div>
+  <div class="grid g4">${[["People (master records)",s.people],["Source records kept",`${s.source_records} <span class=small>(${s.outlook_records} Outlook · ${s.linkedin_records} LinkedIn · ${s.manual_records} manual)</span>`],["Open duplicate cases",s.pending_duplicates],["Pending corrections",s.pending_corrections],["Auto-merged exact matches",s.auto_merged],["Records with source conflicts",s.conflicts],["Stale profiles (>365 days)",s.stale],["Flagged for follow-up",s.follow_up]].map(([l,n])=>`<div class="card kpi"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("")}</div>
+  <div class="grid g2"><div class="card"><h2>Recent changes</h2><table>${a.map(e=>`<tr><td class="small mut">${e.ts.replace("T"," ")}</td><td>${esc(e.summary)}</td></tr>`).join("")}</table></div>
+  <div class="card"><h2>Waiting for your review</h2>${rv.corrections.slice(0,4).map(c=>`<div>• <b>${esc(c.person)}</b>: ${esc(c.field)} → “${esc(c.new_value)}” <span class="small mut">(${Math.round(c.confidence*100)}% · ${esc(c.source_name)})</span></div>`).join("")}
+   ${rv.duplicates.slice(0,4).map(d=>`<div>• Possible duplicate: <b>${esc(d.a.name)}</b> / <b>${esc(d.b.name)}</b> <span class="small mut">(${d.score}: ${esc(d.reasons)})</span></div>`).join("")}<p><button class="b p" onclick="go('review')">Open review queue</button></p></div></div>
+  <div class="grid g2"><div class="card"><h2>Segments (primary)</h2>${Object.entries(s.tiers).map(([t,n])=>`<span class="tag t${t}">Tier ${t}: ${n}</span>`).join(" ")}
+   <p class="small mut">Tier 1 founders/owners/principals · Tier 2 senior & enterprise leaders · Tier 3 vendors/partners/professional services · Tier 4 operators & functional execs · Tier 5 other / insufficient information. People can hold several tiers; these are factual labels, not judgments. Owner Priority is separate and set only by you.</p></div>
+   <div class="card"><h2>Stale profiles</h2>${s.stale_list.length?peopleTable(s.stale_list):'<p class=mut>None</p>'}</div></div>`}
+ if(tab=="people"){const fc=await api("/api/facets");
+  const sel=(k,opts)=>`<label>${k}<br><select id="f_${k}"><option value="">Any</option>${opts.map(o=>`<option>${esc(o)}</option>`).join("")}</select></label>`;
+  m.innerHTML=`<div class="card"><div class="ask"><input id="q" placeholder="Ask: “Which people are in private equity?”"><button class="b p" onclick="ask()">Ask</button></div>
+  <div class="small mut" style="margin-top:6px">Try: <a href="#" onclick="$('#q').value=this.textContent;ask();return false">Show contacts who founded or ran businesses in Texas</a> · <a href="#" onclick="$('#q').value=this.textContent;ask();return false">Which people are in private equity?</a> · <a href="#" onclick="$('#q').value=this.textContent;ask();return false">Who is associated with manufacturing?</a> · <a href="#" onclick="$('#q').value=this.textContent;ask();return false">CFOs in Texas</a></div></div>
+  <div class="card filters">${sel("source",fc.source)}${sel("industry",fc.industry)}${sel("state",fc.state)}${sel("city",fc.city)}${sel("company",fc.company)}
+  <label>role contains<br><input id="f_role" size="10" placeholder="e.g. CFO"></label>
+  <label>segment<br><select id="f_tier"><option value="">Any</option>${[1,2,3,4,5].map(t=>`<option value="${t}">Tier ${t}</option>`).join("")}</select></label>
+  ${sel("priority",fc.priority)}<label>founder/owner<br><select id="f_founder_owner"><option value="">Any</option><option value="1">Yes</option></select></label>
+  <label>other<br><select id="f_other"><option value="">—</option><option value="stale">Stale</option><option value="follow_up">Follow-up</option><option value="conflicts">Source conflicts</option></select></label>
+  <button class="b p" onclick="filt()">Apply filters</button><button class="b" onclick="exportCsv()">Export CSV</button></div>
+  <div id="res" class="card"></div>`; filt()}
+ if(tab=="review"){const r=await api("/api/review");
+  m.innerHTML=`<div class="card"><h2>Proposed corrections from public sources (${r.corrections.length})</h2><p class="small mut">Nothing changes until you approve. Approved items go to Recent changes, where they can be reversed. Outlook write-back is off unless you tick it (simulated in the pilot).</p>
+  ${r.corrections.map(c=>`<div class="card"><b>${esc(c.person)}</b> <a href="#" onclick="openP(${c.person_id});return false" class="small">open card</a>
+   <div class="diff"><div><div class="small mut">Current ${esc(c.field)}</div>${esc(c.old_value)}</div><div><div class="small mut">Proposed</div><b>${esc(c.new_value)}</b></div></div>
+   <div class="small">Source: <a href="${esc(c.source_url)}" target="_blank">${esc(c.source_name)}</a> · found ${esc(c.found_date)} · confidence <b class="${c.confidence<.6?'bad':c.confidence<.8?'warn':'okc'}">${Math.round(c.confidence*100)}%</b> · ${esc(c.note||"")}</div>
+   <p>${c.has_outlook&&c.field!="past_role"?`<label class="small"><input type="checkbox" id="wb${c.id}"> also write back to Outlook (stub)</label> `:""}<button class="b ok" onclick="chg(${c.id},'approve')">Approve</button> <button class="b no" onclick="chg(${c.id},'reject')">Reject</button></p></div>`).join("")||"<p class=mut>None pending.</p>"}</div>
+  <div class="card"><h2>Possible duplicates (${r.duplicates.length})</h2><p class="small mut">Exact matches (same email / LinkedIn URL / same name + company) were auto-linked. These are ambiguous and need a human decision. Merges keep every source record and can be undone.</p>
+  ${r.duplicates.map(d=>`<div class="card"><div class="small"><b>Match score ${d.score}</b> · ${esc(d.reasons)}</div><div class="side">${["a","b"].map(k=>`<div class="card"><b>${esc(d[k].name)}</b> <a href="#" class="small" onclick="openP(${d[k].id});return false">#${d[k].id}</a><br>${esc(d[k].title)} · ${esc(d[k].company)}<br><span class="small mut">${esc(d[k].city)}, ${esc(d[k].state)} · ${d[k].sources.join(", ")}<br>${d[k].source_ids.map(esc).join("<br>")}</span></div>`).join("")}</div>
+  <p><button class="b ok" onclick="mt(${d.id},'approve')">Merge (same person)</button> <button class="b no" onclick="mt(${d.id},'reject')">Not the same person</button></p></div>`).join("")||"<p class=mut>No open duplicate cases.</p>"}</div>`}
+ if(tab=="changes"){const a=await api("/api/audit?limit=300");
+  m.innerHTML=`<div class="card"><h2>Recent changes · audit trail</h2><p class="small mut">Append-only. Every merge, approval, priority edit, manual add, import and export is logged with who, when and which system. Reversible events have an Undo button; undo is itself logged.</p>
+  <table><tr><th>#</th><th>When</th><th>Who</th><th>Action</th><th>System</th><th>Summary</th><th></th></tr>${a.map(e=>`<tr><td>${e.id}</td><td class="small">${e.ts.replace("T"," ")}</td><td class="small">${esc(e.actor)}</td><td><span class="tag">${e.action}</span></td><td class="small">${esc(e.system)}</td><td>${esc(e.summary)}${e.reverted_by?` <span class="tag bad">reversed by #${e.reverted_by}</span>`:""}</td>
+  <td>${!e.reverted_by&&["merge","auto_merge","approve_change","set_priority","reject_match","reject_change","add_person","add_note"].includes(e.action)?`<button class="b" onclick="undo(${e.id})">Undo</button>`:""}</td></tr>`).join("")}</table></div>`}
+ if(tab=="add"){const fl=[["first_name","First name"],["last_name","Last name"],["title","Title"],["company","Company"],["industry","Industry"],["city","City"],["state","State"],["email","Email"],["phone","Phone"],["linkedin_url","LinkedIn URL"]];
+  m.innerHTML=`<div class="card" style="max-width:760px"><h2>Add a person</h2><p class="small mut">Fields you enter are stored with provenance “User note · added manually”. Anything left blank shows as Unknown. The agent checks for possible duplicates but never auto-merges a manual add.</p>
+  <div class="grid g2">${fl.map(([k,l])=>`<label class="small">${l}<br><input id="a_${k}" style="width:100%"></label>`).join("")}</div>
+  <label class="small">How the relationship originated<br><input id="a_relationship_origin" style="width:100%" placeholder="e.g. Introduced by … at …"></label><br><br>
+  <label class="small">Owner Priority<br><select id="a_owner_priority">${["None","High","Medium","Low"].map(x=>`<option>${x}</option>`).join("")}</select></label><br><br>
+  <label class="small">Private note (never shown to future participant-facing tools)<br><textarea id="a_note" rows="3" style="width:100%"></textarea></label>
+  <p><button class="b p" onclick="addP()">Add person</button></p><div id="addres"></div></div>`}
+ if(tab=="import"){m.innerHTML=`<div class="card" style="max-width:760px"><h2>Import contacts</h2>
+  <p class="small">In production, Outlook connects through Microsoft Graph (delegated sign-in, Contacts.Read / Contacts.ReadWrite only). In this pilot it's a sample CSV in Outlook export format with a stub Graph ID column. LinkedIn always comes from Jim's own <b>Connections.csv</b> export (no scraping, no automated sync).</p>
+  <p><label>Outlook contacts CSV <input type="file" id="fo"></label> <button class="b" onclick="imp('outlook','fo')">Import</button></p>
+  <p><label>LinkedIn Connections.csv <input type="file" id="fl"></label> <button class="b" onclick="imp('linkedin','fl')">Import</button></p>
+  <p><button class="b" onclick="post('/api/monitor/run').then(r=>toast(r.created+' new proposed corrections'))">Run public-source check now (SAMPLE feed)</button></p><div id="impres"></div></div>`}
+}
+function fparams(){const p=new URLSearchParams();["source","industry","state","city","company","priority","founder_owner","tier"].forEach(k=>{const v=$("#f_"+k)?.value;if(v)p.set(k,v)});
+ const r=$("#f_role")?.value;if(r)p.set("role",r);const o=$("#f_other")?.value;if(o)p.set(o,"1");return p}
+let lastFilters=null;
+async function filt(){const p=fparams();lastFilters=p;const r=await api("/api/people?"+p);showRes(r,[...p.entries()].map(([k,v])=>`${k} = ${v}`))}
+async function ask(){const q=$("#q").value;if(!q)return;const r=await post("/api/ask",{q});lastFilters=toParams(r.filters);showRes(r,r.chips,r.parser)}
+function toParams(f){const p=new URLSearchParams();for(const[k,v]of Object.entries(f)){if(k=="role_rx")p.set("role",v[0]);else if(Array.isArray(v))p.set(k,v.join(","));else p.set(k,v===true?"1":v)}return p}
+function showRes(r,chips,parser){const u=Object.entries(r.excluded_unknown||{}).filter(([k,n])=>n).map(([k,n])=>`${n} record(s) excluded because ${k} is Unknown`).join("; ");
+ $("#res").innerHTML=`<div class="chips"><b>${r.count} people</b> · filters applied: ${chips.length?chips.map(c=>`<span class="chip">${esc(c)}</span>`).join(""):'<span class="mut">none</span>'} ${parser?`<span class="small mut">(${parser})</span>`:""}</div>${u?`<div class="small warn" style="margin:6px 0">${u}</div>`:""}<div style="margin-top:8px">${peopleTable(r.rows)}</div>`}
+function exportCsv(){location.href="/api/export.csv?"+(lastFilters||fparams())}
+async function openP(id){const s=await api("/api/person/"+id),d=$("#drawer");d.style.display="block";
+ const F=(l,v)=>`<tr><td class="mut small" style="width:120px">${l}</td><td>${v.value=="Unknown"?'<span class="mut">Unknown</span>':esc(v.value)} ${pv(v.provenance)} <span class="small mut">${esc(v.source_label||"")}${v.as_of?" · "+esc(v.as_of):""}</span>${(v.alternatives||[]).map(a=>`<div class="small warn">Other source says: “${esc(a.value)}” (${esc(a.source_label)}${a.as_of?", "+esc(a.as_of):""})</div>`).join("")}</td></tr>`;
+ d.innerHTML=`<button class="b x" onclick="$('#drawer').style.display='none'">Close</button><h2 style="font-size:19px">${esc(s.name)} <span class="small mut">#${s.id} · SAMPLE</span></h2>
+ <div>${s.tiers.map(t=>`<span class="tag t${t.tier}" title="${esc(t.reason)}">Tier ${t.tier}</span>`).join("")}${s.founder_owner?'<span class="tag">founder/owner experience</span>':''}${s.stale?'<span class="tag">stale</span>':''}</div>
+ <div class="card" style="margin-top:10px"><b>Owner Priority</b> (only you set this; the AI never writes it): <select id="pr">${["High","Medium","Low","None"].map(x=>`<option ${x==s.owner_priority?"selected":""}>${x}</option>`).join("")}</select>
+ <label class="small"><input type="checkbox" id="fu" ${s.follow_up?"checked":""}> follow-up</label> <button class="b p" onclick="setPr(${s.id})">Save</button>
+ <div class="small mut">${s.priority_set_by?`Last set by ${esc(s.priority_set_by)} at ${esc(s.priority_set_at)}`:"Not set yet"} · Relationship origin: ${esc(s.relationship_origin)}</div></div>
+ <h3>Bio</h3><div class="bio">${esc(s.bio.text)}<div class="small" style="margin-top:6px">${pv("AI summary")} <span class="mut">${esc(s.bio.mode)}</span><br>${s.bio.sources.map(x=>`[${x.n}] ${esc(x.label)}${x.url?` – <a href="${esc(x.url)}" target=_blank>${esc(x.url)}</a>`:""}`).join("<br>")}</div></div>
+ <h3>Why these segments</h3>${s.tiers.map(t=>`<div class="small">Tier ${t.tier}: ${esc(t.reason)}</div>`).join("")}
+ <h3>Details</h3><table>${F("Title",s.title)}${F("Company",s.company)}${F("Industry",s.industry)}${F("City",s.city)}${F("State",s.state)}${F("LinkedIn",s.linkedin_url)}${F("Connected on",s.connected_on)}
+ <tr><td class="mut small">Emails</td><td>${s.emails.map(e=>`${esc(e.value)} ${pv(e.provenance)} <span class="small mut">${esc(e.source)}</span>`).join("<br>")||'<span class="mut">Unknown</span>'}</td></tr>
+ <tr><td class="mut small">Phones</td><td>${s.phones.map(e=>`${esc(e.value)} ${pv(e.provenance)} <span class="small mut">${esc(e.source)}</span>`).join("<br>")||'<span class="mut">Unknown</span>'}</td></tr></table>
+ <h3>Experience</h3>${s.roles.length?s.roles.map(r=>`<div>${esc(r.title)}, ${esc(r.company)} (${r.start_year}–${r.end_year}) ${pv(r.provenance)} <span class="small mut">${esc(r.source_label)}</span></div>`).join(""):'<span class="mut">Past roles: Unknown</span>'}
+ <h3>Private notes</h3><div class="private">${s.notes.map(n=>`<div class="small">${esc(n.value)} <span class="mut">(${esc(n.source_label)})</span></div>`).join("")||'<span class="mut small">None</span>'}
+ <div style="margin-top:6px"><input id="nt" placeholder="Add a private note" style="width:75%"> <button class="b" onclick="addNote(${s.id})">Add</button></div></div>
+ <h3>Sources (${s.source_records.length})</h3>${s.source_records.map(r=>`<div class="small"><span class="tag">${r.source}</span> ${esc(r.source_id)} <span class="mut">batch ${r.batch_id??"–"} · ${esc(r.imported_at)}</span></div>`).join("")}
+ <h3>Possible duplicates</h3>${s.duplicates.filter(x=>x.status=="pending").map(x=>`<div class="small">Score ${x.score} with <a href="#" onclick="openP(${x.other.id});return false">${esc(x.other.name)}</a> (${esc(x.other.title)}, ${esc(x.other.company)}) – ${esc(x.reasons)} <button class="b ok" onclick="mt(${x.id},'approve',${s.id})">Merge</button> <button class="b no" onclick="mt(${x.id},'reject',${s.id})">Not the same</button></div>`).join("")||'<span class="small mut">None open</span>'}
+ <h3>Update history</h3>${s.history.map(h=>`<div class="small">${esc(h.ts.replace("T"," "))} · ${esc(h.actor)} · ${esc(h.summary)} ${h.reverted_by?'<span class="tag bad">reversed</span>':(["merge","auto_merge","approve_change","set_priority","add_note","add_person"].includes(h.action)?`<button class="b" onclick="undo(${h.id},${s.id})">Revert</button>`:"")}</div>`).join("")||'<span class="small mut">No changes yet</span>'}
+ ${s.proposals.length?`<h3>Corrections</h3>`+s.proposals.map(c=>`<div class="small">${esc(c.field)} → “${esc(c.new_value)}” · ${esc(c.status)} · ${esc(c.source_name)} ${Math.round(c.confidence*100)}%</div>`).join(""):""}`}
+async function setPr(id){await post(`/api/person/${id}/priority`,{priority:$("#pr").value,follow_up:$("#fu").checked});toast("Priority saved and logged");openP(id)}
+async function addNote(id){const t=$("#nt").value;if(!t)return;await post(`/api/person/${id}/note`,{text:t});openP(id)}
+async function mt(id,a,reopen){await post(`/api/match/${id}/${a}`);toast(a=="approve"?"Merged · can be undone":"Marked not the same person");reopen?openP(reopen):render()}
+async function chg(id,a){const wb=$("#wb"+id)?.checked;await post(`/api/change/${id}/${a}`,{writeback:wb});toast(a=="approve"?"Approved · can be reversed":"Rejected");render()}
+async function undo(id,reopen){await post(`/api/audit/${id}/revert`);toast("Reversed");reopen?openP(reopen):render()}
+async function addP(){const b={};document.querySelectorAll("[id^=a_]").forEach(e=>b[e.id.slice(2)]=e.value);const r=await post("/api/people",b);
+ $("#addres").innerHTML=`<p class="okc">Added #${r.id}. ${r.possible_duplicates.length?`${r.possible_duplicates.length} possible duplicate(s) sent to the review queue.`:"No likely duplicates found."} <a href="#" onclick="openP(${r.id});return false">Open card</a></p>`}
+async function imp(src,id){const f=$("#"+id).files[0];if(!f)return toast("Choose a file");const fd=new FormData();fd.append("file",f);const r=await api(`/api/import/${src}`,{method:"POST",body:fd});$("#impres").innerHTML=`<p>Imported ${r.rows} rows · auto-merged ${r.dedupe.auto_merged} · ${r.dedupe.queued_for_review} to review</p>`}
+nav();render();
+</script></body></html>

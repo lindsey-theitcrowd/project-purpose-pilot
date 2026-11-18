@@ -1,0 +1,7 @@
+.share_token
+.venv/
+data/
+__pycache__/
+*.log
+.public_url
+.env

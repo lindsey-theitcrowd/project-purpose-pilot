@@ -1,0 +1,65 @@
+{
+  "_comment": "SAMPLE simulated public-source monitor results. Fictional.",
+  "updates": [
+    {
+      "match": {
+        "linkedin_url": "https://www.linkedin.com/in/sample-daniel-galloway-1003"
+      },
+      "field": "title",
+      "new_value": "Chief Executive Officer",
+      "source_name": "Company leadership page (SAMPLE)",
+      "source_url": "https://bluebonnetcap.example/leadership",
+      "found_date": "2026-11-12",
+      "confidence": 0.92,
+      "note": "Leadership page lists new title."
+    },
+    {
+      "match": {
+        "email": "robert.kowalczyk@copperleaf.example"
+      },
+      "field": "company",
+      "new_value": "Silverline Ventures",
+      "source_name": "Press release (SAMPLE)",
+      "source_url": "https://silverlinevc.example/news/new-partner",
+      "found_date": "2026-11-05",
+      "confidence": 0.88,
+      "note": "Announced as joining Silverline Ventures."
+    },
+    {
+      "match": {
+        "email": "rebecca.everly@caprock.example"
+      },
+      "field": "city",
+      "new_value": "Austin",
+      "source_name": "State business filing (SAMPLE)",
+      "source_url": "https://sos-sample.example/filings/123",
+      "found_date": "2026-10-28",
+      "confidence": 0.65,
+      "note": "Registered agent address moved to Austin."
+    },
+    {
+      "match": {
+        "linkedin_url": "https://www.linkedin.com/in/sample-jessica-merriweather-1120"
+      },
+      "field": "past_role",
+      "new_value": "Founder | Open Range Foundation | 2010 | 2016",
+      "source_name": "Foundation history page (SAMPLE)",
+      "source_url": "https://openrange.example/history",
+      "found_date": "2026-11-09",
+      "confidence": 0.81,
+      "note": "Named as founder in organization history."
+    },
+    {
+      "match": {
+        "email": "sandra.lockhart@lonestarforge.example"
+      },
+      "field": "title",
+      "new_value": "President",
+      "source_name": "News mention (SAMPLE)",
+      "source_url": "https://news-sample.example/article/77",
+      "found_date": "2026-11-14",
+      "confidence": 0.42,
+      "note": "Low confidence: article names a person with this name; could be someone else."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+/workspace/project-purpose/pilot/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+
+[PASS] 1a. Import from Outlook (Microsoft Graph stub: sample Outlook export with stub Graph IDs)
+   ✓ Outlook record count reconciles: file 109 rows = 109 source records
+   ✓ Every original Outlook contact ID is preserved
+   ✓ Simulated Outlook mailbox holds the same contacts (for reversible write-back)
+   ✓ Outlook fields carry provenance classes ['User note', 'Verified']
+
+[PASS] 1b. Import from an authorized LinkedIn export (Connections.csv format)
+   ✓ LinkedIn record count reconciles: 105 rows = 105 source records (export 'Notes:' preamble skipped)
+   ✓ Every LinkedIn profile URL kept as the source ID
+   ✓ LinkedIn fields labeled Participant-provided
+   ✓ Every master record links to at least one original source record
+
+[PASS] 2. Deduplication with a review queue and source-preserving master records
+   ✓ Exact matches auto-linked: 50 (expected 50)
+   ✓ Ambiguous pairs sent to review queue: 17 (expected 17: nicknames, job changes, same-name different people)
+   ✓ Reviewer approved 14 merges, rejected 3 'not the same person' via the API
+   ✓ Master records after review = 150 (true number of sample people = 150)
+   ✓ Source records unchanged by merges (hash identical, none deleted)
+   ✓ One merge reversed: record #163 split back out with its own source records
+   ✓ All decisions logged (auto_merge, merge, reject_match, revert)
+
+[PASS] 3. Factual summaries and role-based segments for a representative sample
+   ✓ Spot-check sample of 25 records
+   ✓ Every bio citation [n] points to a listed source
+   ✓ Missing facts are shown as Unknown, never guessed
+   ✓ Bios are labeled AI summary (template mode, no LLM key)
+   ✓ Multi-segment preserved: 43 people hold more than one tier
+   ✓ Every segment has a written evidence reason
+   ✓ Tier 5 used only for insufficient information (10 people)
+   ✓ All five tiers represented
+
+[PASS] 4. Natural-language queries, filters and editable owner priorities
+   ✓ “Show contacts who founded or ran businesses in Texas” → 20 people, matches manual filter; filters shown: ['Founder/Owner OR CEO/President (current or past) = yes', 'Location state = TX']
+   ✓ “Which people are in private equity?” → 14 people, matches manual filter; filters shown: ['Industry = Private Equity (current company or past role)']
+   ✓ “Who is associated with manufacturing?” → 21 people, matches manual filter; filters shown: ['Industry = Manufacturing (current company or past role)']
+   ✓ Filter combination (Manufacturing + TX + Tier 1) → 3 people, correct
+   ✓ Owner Priority edited (None → High → Medium) and follow-up flag set
+   ✓ Both priority edits logged in the audit trail
+   ✓ AI agent is blocked from changing Owner Priority (never written by AI)
+
+[PASS] 5. Public-information change detection, proposed correction and approval
+   ✓ 5 proposed corrections raised by the Monitor job, each with source URL, date and confidence
+   ✓ Before approval the master record still says “Chief Technology Officer” (nothing auto-applied)
+   ✓ Approved: title now “Chief Executive Officer”, labeled Verified with source https://bluebonnetcap.example/leadership
+   ✓ Optional Outlook write-back applied to the stub mailbox after approval
+   ✓ Revert restored the prior master value AND the Outlook before-image
+   ✓ Low-confidence (42%) ambiguous proposal rejected; nothing changed
+
+[PASS] 6. Manual add, export, audit trail and path to Eightfold / Project Purpose
+   ✓ New person stored with provenance (User note) and relationship origin
+   ✓ New person segmented (Tier 1, founder) and keeps owner-set priority
+   ✓ Adding a person who already exists (Richard Montague) queues a possible duplicate instead of auto-merging
+   ✓ CSV export complete and readable: 152 rows × 24 columns
+   ✓ Full JSON export (master, sources, provenance, audit) for portability / Eightfold hand-off
+   ✓ Audit trail covers every pilot action: ['add_person', 'approve_change', 'auto_merge', 'export', 'import', 'merge', 'monitor_run', 'reject_change', 'reject_match', 'revert', 'set_priority']
+
+============================================================
+PASS  1a. Import from Outlook (Microsoft Graph stub: sample Outlook export with stub Graph IDs)
+PASS  1b. Import from an authorized LinkedIn export (Connections.csv format)
+PASS  2. Deduplication with a review queue and source-preserving master records
+PASS  3. Factual summaries and role-based segments for a representative sample
+PASS  4. Natural-language queries, filters and editable owner priorities
+PASS  5. Public-information change detection, proposed correction and approval
+PASS  6. Manual add, export, audit trail and path to Eightfold / Project Purpose
+7/7 acceptance tests passed  (fresh DB: /tmp/tmp1j778mxf/acceptance_SAMPLE.db)

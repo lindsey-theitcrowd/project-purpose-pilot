@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: project-purpose-pilot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-deploy.txt
+    startCommand: python gen_sample.py && python -m pp.demo --seed && uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SHARE_TOKEN
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.13.0
