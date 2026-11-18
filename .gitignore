@@ -5,3 +5,4 @@ __pycache__/
 *.log
 .public_url
 .env
+.render_share_token
